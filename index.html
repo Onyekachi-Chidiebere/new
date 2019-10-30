@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>LoginApp</title>
+</head>
+<body>
+   <div id='body'>
+    <form class="form" id="login">
+        <label for="name">Email</label>
+            <input name='email'id='email' placeholder="email" type="email"><br>
+            <label for="password">Password</label>
+            <input name='password'id='pass' placeholder="password" type="password"><br>
+            <button type=submit id="submit"> Log in</button>
+            <svg width="25" height="30" viewBox="0 0 25 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.4987 29.0833C14.1029 29.0833 15.4154 27.7708 15.4154 26.1666H9.58203C9.58203 26.9401 9.88932 27.682 10.4363 28.229C10.9833 28.776 11.7251 29.0833 12.4987 29.0833ZM21.2487 20.3333V13.0416C21.2487 8.5645 18.857 4.81659 14.6862 3.82492V2.83325C14.6862 1.62284 13.7091 0.645752 12.4987 0.645752C11.2883 0.645752 10.3112 1.62284 10.3112 2.83325V3.82492C6.12578 4.81659 3.7487 8.54992 3.7487 13.0416V20.3333L0.832031 23.2499V24.7083H24.1654V23.2499L21.2487 20.3333Z" fill="black"/>
+</svg>
+
+    </form>
+
+    <script>
+      async function handleSubmit(e) {
+          e.preventDefault();
+          let email = document.querySelector('#email').value;
+          let password = document.querySelector('#pass').value;
+          console.log({email},{password})
+          const url = `http://127.0.0.1:8000/api/v1/login/admin`;
+          axios.post(url, {email},{password})
+          .then(function (response) {
+			  console.log(response)
+			//   console.log(response.data)
+          })
+          .catch(function (error) {
+          console.log(error);
+		  });
+          }
+          document.querySelector("#submit").addEventListener('click',handleSubmit)
+    </script>
+    // <!-- <form class="form" id="Signup">
+    //     <label for="fullname">Fullname</label>
+    //         <input name='fullname' placeholder="Fullname" type="text"><br>
+    //         <label for="username">Username</label>
+    //         <input name='username' placeholder="Username" type="text"><br>
+    //         <label for="createPassword">Create Password</label>
+    //         <input name='createPassword' placeholder="Password" type="password"><br>
+    //         <label for="confirmPassword">Create Password</label>
+    //         <input name='confirmPassword' placeholder="Password" type="password"><br>
+    //         <button type='submit' > Sign up</button>
+    // </form> -->
+   </div>
+</body>
+</html>
